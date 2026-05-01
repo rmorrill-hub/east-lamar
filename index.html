@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>East Lamar Boarding & Training School — East Austin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  color: #111;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ── Tokens ── */
+:root {
+  --teal-800: #092E2B;
+  --teal-600: #0B7B72;
+  --teal-400: #25B0A5;
+  --teal-050: #E6F7F6;
+  --gold:     #F0B429;
+  --gold-dark:#B07000;
+  --gold-light:#FEF3CC;
+  --fg1: #111;
+  --fg2: #555;
+  --fg3: #999;
+  --bg:  #F8F7F4;
+  --white: #fff;
+  --radius: 14px;
+  --radius-pill: 100px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+  --transition: all 0.26s cubic-bezier(0.4,0,0.2,1);
+  --max-w: 1200px;
+}
+
+/* ── Layout helpers ── */
+.container { max-width: var(--max-w); margin-inline: auto; padding-inline: 24px; }
+.section { padding-block: 88px; }
+.section--teal { background: var(--teal-050); }
+.section--dark { background: var(--teal-800); color: white; }
+.section--warm { background: var(--bg); }
+
+/* ── Typography ── */
+.eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--fg3);
+  margin-bottom: 12px; display: block;
+}
+.eyebrow--gold  { color: var(--gold); }
+.eyebrow--teal  { color: var(--teal-400); }
+.eyebrow--white { color: rgba(255,255,255,0.45); }
+
+h1, h2, h3 {
+  font-family: 'Fraunces', serif;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 800; }
+h2 { font-size: clamp(32px, 4vw, 52px); font-weight: 800; }
+h3 { font-size: clamp(22px, 2.5vw, 30px); font-weight: 700; line-height: 1.2; }
+em { font-style: italic; color: var(--teal-400); }
+.section-headline { text-align: center; margin-bottom: 56px; }
+.section-headline p { font-size: 17px; color: var(--fg2); line-height: 1.7; max-width: 520px; margin: 16px auto 0; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 30px; border-radius: var(--radius-pill);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  border: 2px solid transparent; cursor: pointer;
+  transition: var(--transition); white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: scale(0.97); }
+.btn--gold    { background: var(--gold); color: var(--teal-800); border-color: var(--gold); }
+.btn--gold:hover { background: #F5C84A; }
+.btn--teal    { background: var(--teal-600); color: white; border-color: var(--teal-600); }
+.btn--teal:hover { background: #0a6b63; }
+.btn--outline-white { background: transparent; color: white; border-color: rgba(255,255,255,0.45); }
+.btn--outline-white:hover { background: rgba(255,255,255,0.1); border-color: white; }
+.btn--outline { background: transparent; color: var(--teal-600); border-color: var(--teal-600); }
+.btn--outline:hover { background: var(--teal-600); color: white; }
+.btn--sm { padding: 10px 22px; font-size: 11px; }
+
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: white; border-bottom: 1px solid rgba(0,0,0,0.07);
+  backdrop-filter: blur(12px);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px; max-width: var(--max-w); margin-inline: auto; padding-inline: 24px;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.nav-logo img { height: 44px; width: auto; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-link {
+  font-size: 14px; font-weight: 600; color: var(--fg2);
+  transition: var(--transition); position: relative;
+}
+.nav-link:hover { color: var(--teal-600); }
+.nav-link.active { color: var(--teal-600); }
+.nav-link--neighbor {
+  color: var(--teal-400); display: flex; align-items: center; gap: 4px;
+}
+.nav-link--neighbor::after { content: '↗'; font-size: 11px; }
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--fg2);
+  font-size: 24px;
+  padding: 8px;
+}
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero {
+  background: var(--teal-800);
+  padding: 100px 24px 90px;
+  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: center;
+  max-width: 100%;
+}
+.hero-inner { max-width: var(--max-w); margin-inline: auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.hero::before {
+  content: ''; position: absolute; top: -100px; right: -100px;
+  width: 480px; height: 480px; border-radius: 50%;
+  background: var(--teal-600); opacity: 0.15; pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -80px; left: 20%;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: var(--teal-400); opacity: 0.08; pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero h1 { color: white; margin-bottom: 20px; }
+.hero-body {
+  font-size: 17px; line-height: 1.75; color: rgba(255,255,255,0.65);
+  max-width: 480px; margin-bottom: 36px;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 36px; }
+.hero-badge {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.07); border-radius: 100px;
+  padding: 7px 14px; font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,0.7);
+}
+.hero-badge i { color: var(--teal-400); }
+
+.hero-visual { position: relative; z-index: 1; }
+.hero-img-wrap {
+  border-radius: 20px; overflow: hidden; height: 400px;
+}
+.hero-rating {
+  position: absolute; bottom: 20px; left: 20px;
+  background: white; border-radius: 12px; padding: 12px 16px;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: var(--shadow-lg);
+}
+.hero-rating .stars { color: var(--gold); font-size: 13px; letter-spacing: 1px; }
+.hero-rating .score { font-size: 18px; font-weight: 800; color: var(--fg1); }
+.hero-rating .reviews { font-size: 11px; color: var(--fg3); }
+
+/* ─────────────────────────────────────────
+   SERVICES
+───────────────────────────────────────── */
+.services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.service-card {
+  background: white; border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow);
+  transition: var(--transition); cursor: pointer;
+  display: flex; flex-direction: column;
+}
+.service-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.service-card-top {
+  height: 220px; display: flex; align-items: center; justify-content: center;
+  font-size: 36px; position: relative; overflow: hidden;
+}
+.service-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+.service-card h3 { margin-bottom: 8px; font-size: 22px; }
+.service-card p { font-size: 14px; color: var(--fg2); line-height: 1.65; margin-bottom: 20px; flex: 1; }
+.service-price {
+  font-size: 13px; font-weight: 700; color: var(--teal-600);
+  padding: 8px 14px; background: var(--teal-050); border-radius: 8px;
+  display: inline-block; margin-bottom: 16px;
+}
+.service-features { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.service-features li {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--fg2);
+}
+.service-features li i { color: var(--teal-600); flex-shrink: 0; }
+
+/* ─────────────────────────────────────────
+   DAILY SCHEDULE
+───────────────────────────────────────── */
+.schedule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.schedule-items { display: flex; flex-direction: column; gap: 0; }
+.schedule-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+.schedule-item:last-child { border-bottom: none; }
+.schedule-time {
+  font-size: 12px; font-weight: 700; color: var(--gold);
+  letter-spacing: 0.05em; min-width: 60px; padding-top: 2px;
+}
+.schedule-desc { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.55; }
+.schedule-desc strong { color: white; font-weight: 600; }
+.schedule-visual {
+  background: rgba(255,255,255,0.05); border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 32px; display: flex; flex-direction: column; gap: 16px;
+}
+.schedule-stat { display: flex; flex-direction: column; gap: 4px; }
+.schedule-stat .num {
+  font-family: 'Fraunces', serif; font-size: 48px; font-weight: 800;
+  color: white; line-height: 1; letter-spacing: -0.03em;
+}
+.schedule-stat .num em { color: var(--teal-400); font-style: normal; }
+.schedule-stat .label { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 500; }
+.schedule-divider { height: 1px; background: rgba(255,255,255,0.08); }
+
+/* ─────────────────────────────────────────
+   MEET LAMAR
+───────────────────────────────────────── */
+.lamar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.lamar-photo {
+  background: linear-gradient(135deg, var(--teal-050), #C5EFEC);
+  border-radius: 20px; height: 420px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: var(--teal-600); font-size: 14px; font-weight: 600; gap: 12px; text-align: center; padding: 24px;
+  overflow: hidden;
+}
+.lamar-creds { display: flex; flex-direction: column; gap: 10px; margin: 24px 0; }
+.lamar-cred {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; background: var(--teal-050); border-radius: 10px;
+}
+.lamar-cred i { color: var(--teal-600); flex-shrink: 0; }
+.lamar-cred span { font-size: 14px; font-weight: 600; color: var(--fg1); }
+.lamar-quote {
+  font-family: 'Fraunces', serif; font-size: 20px; font-weight: 800;
+  color: var(--teal-600); line-height: 1.3; margin-bottom: 16px;
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────
+   TESTIMONIALS
+───────────────────────────────────────── */
+.testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.testimonial-card {
+  background: white; border-radius: var(--radius); padding: 24px;
+  box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 12px;
+}
+.stars { color: var(--gold); font-size: 13px; letter-spacing: 2px; }
+.testimonial-quote { font-size: 14px; line-height: 1.75; color: #444; font-style: italic; flex: 1; }
+.testimonial-attr { font-size: 12px; font-weight: 700; color: var(--teal-600); text-transform: uppercase; letter-spacing: 0.07em; }
+.testimonial-dog { font-size: 12px; color: var(--fg3); }
+.rating-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--teal-050); border-radius: 100px;
+  padding: 10px 20px; margin-top: 32px;
+}
+.rating-badge .score { font-size: 20px; font-weight: 800; color: var(--teal-600); }
+.rating-badge .detail { font-size: 13px; color: var(--fg2); }
+.testimonials-footer { text-align: center; margin-top: 32px; }
+
+/* ─────────────────────────────────────────
+   SPACES (East Austin Spaces)
+───────────────────────────────────────── */
+.spaces-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.space-card {
+  background: #E6F7F6; border: 1px solid rgba(11,123,114,0.15);
+  border-radius: var(--radius); overflow: hidden;
+  transition: var(--transition);
+}
+.space-card:hover { background: #C5EFEC; transform: translateY(-2px); }
+.space-card-img {
+  height: 180px; display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600; color: rgba(11,123,114,0.5);
+  border-bottom: 1px solid rgba(11,123,114,0.12);
+  background: rgba(11,123,114,0.07);
+  overflow: hidden;
+}
+.space-card-body { padding: 20px; }
+.space-tag {
+  display: inline-block; padding: 3px 10px;
+  background: rgba(11,123,114,0.12); color: #0B7B72;
+  border-radius: 100px; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;
+}
+.space-card h3 { font-size: 18px; color: #092E2B; margin-bottom: 8px; line-height: 1.3; }
+.space-card p { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 16px; }
+.space-card .address { font-size: 12px; color: #999; display: flex; align-items: center; gap: 5px; }
+
+/* ─────────────────────────────────────────
+   NEIGHBORS CROSSPROMO
+───────────────────────────────────────── */
+.neighbors-bar {
+  background: var(--teal-050); border-radius: var(--radius);
+  padding: 40px 48px; display: grid;
+  grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+}
+.neighbors-bar h3 { font-size: 26px; margin-bottom: 8px; }
+.neighbors-bar p { font-size: 15px; color: var(--fg2); max-width: 500px; line-height: 1.6; }
+.neighbors-meta { font-size: 12px; font-weight: 600; color: var(--teal-600); margin-bottom: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+.footer {
+  background: var(--teal-800); color: white;
+  padding: 64px 24px 32px;
+}
+.footer-inner {
+  max-width: var(--max-w); margin-inline: auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+  padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 28px;
+}
+.footer-brand p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-top: 16px; max-width: 280px; }
+.footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-link { font-size: 14px; color: rgba(255,255,255,0.6); transition: var(--transition); }
+.footer-link:hover { color: white; }
+.footer-contact-item { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 8px; }
+.footer-contact-item i { color: var(--teal-400); margin-top: 1px; flex-shrink: 0; }
+.footer-bottom {
+  max-width: var(--max-w); margin-inline: auto;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: rgba(255,255,255,0.3);
+}
+.footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.footer-logo img { height: 48px; filter: brightness(0) invert(1); opacity: 0.9; }
+
+/* ─────────────────────────────────────────
+   BOOKING MODAL
+───────────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(9,46,43,0.7);
+  backdrop-filter: blur(4px); z-index: 200;
+  display: none; align-items: center; justify-content: center; padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: white; border-radius: 20px; padding: 40px;
+  max-width: 480px; width: 100%; box-shadow: 0 24px 80px rgba(0,0,0,0.25);
+  position: relative;
+}
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: var(--bg); border: none; border-radius: 8px;
+  width: 32px; height: 32px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--fg2); transition: var(--transition);
+}
+.modal-close:hover { background: #eee; }
+.modal h3 { font-size: 28px; margin-bottom: 6px; }
+.modal .sub { font-size: 14px; color: var(--fg2); margin-bottom: 28px; line-height: 1.6; }
+.booking-options { display: flex; flex-direction: column; gap: 12px; }
+.booking-option {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px; border-radius: 12px; border: 2px solid #f0f0ec;
+  cursor: pointer; transition: var(--transition); min-height: 44px;
+}
+.booking-option:hover { border-color: var(--teal-400); background: var(--teal-050); }
+.booking-option-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--teal-050); color: var(--teal-600);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.booking-option h4 { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+.booking-option p { font-size: 12px; color: var(--fg3); }
+.modal-note { font-size: 12px; color: var(--fg3); text-align: center; margin-top: 20px; line-height: 1.5; }
+
+/* ─────────────────────────────────────────
+   RESPONSIVE — TABLET & MOBILE
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Section padding */
+  .section { padding-block: 56px; }
+  .section-headline { margin-bottom: 36px; }
+  .section-headline p { font-size: 15px; }
+
+  /* Nav */
+  .nav-links { display: none; }
+  .nav-actions .btn--outline { display: none; }
+  .nav-inner { padding-inline: 16px; }
+  .nav-toggle { display: flex; }
+
+  /* Hero — stack vertically */
+  .hero { padding: 52px 16px 48px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+  .hero-visual { order: -1; }
+  .hero-img-wrap { height: 280px !important; border-radius: 16px; }
+  .hero-body { font-size: 15px; margin-bottom: 24px; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-badges { gap: 8px; }
+  .hero-badge { font-size: 11px; padding: 6px 12px; }
+  .hero-rating { bottom: 12px; left: 12px; padding: 10px 12px; gap: 8px; }
+
+  /* Services — 2 cols, then 1 col on smaller */
+  .services-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .service-card-top { height: 200px; }
+
+  /* Schedule — stack */
+  .schedule-grid { grid-template-columns: 1fr !important; gap: 32px; }
+  .schedule-time { min-width: 52px; font-size: 11px; }
+
+  /* Stats grid */
+  .schedule-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  /* Meet Lamar — stack */
+  .lamar-grid { grid-template-columns: 1fr; gap: 32px; }
+  .lamar-photo { height: 320px; }
+  .lamar-quote { font-size: 17px; }
+
+  /* Testimonials — 2 cols then 1 */
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+
+  /* Spaces — 2 cols then 1 */
+  .spaces-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+
+  /* Neighbors crosspromo — stack */
+  .neighbors-bar {
+    grid-template-columns: 1fr;
+    padding: 28px 20px;
+  }
+  .neighbors-bar > div:last-child { display: none; }
+
+  /* Footer — single column */
+  .footer { padding: 48px 16px 24px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+
+  /* Modal */
+  .modal { padding: 28px 20px; }
+  .modal h3 { font-size: 24px; }
+
+  /* Container padding */
+  .container { padding-inline: 16px; }
+
+  /* Nav actions */
+  .nav-actions { gap: 8px; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 36px; }
+  h2 { font-size: 28px; }
+  h3 { font-size: 20px; }
+
+  .hero { padding: 40px 16px 40px; }
+  .hero-img-wrap { height: 240px !important; }
+  .service-card-top { height: 180px; }
+  .lamar-photo { height: 280px; }
+
+  .services-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .spaces-grid { grid-template-columns: 1fr; }
+
+  .schedule-visual { grid-template-columns: 1fr; }
+  .schedule-stat .num { font-size: 36px; }
+
+  .neighbors-bar { padding: 20px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="window.location.hash='#home'">
+      <img src="images/east_lamar_logo.png" alt="East Lamar Boarding & Training School"/>
+    </div>
+    <div class="nav-links">
+      <a class="nav-link active" href="#services">Services</a>
+      <a class="nav-link" href="#spaces">Our Spaces</a>
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#testimonials">Testimonials</a>
+      <a class="nav-link nav-link--neighbor" href="https://neighborsatx.com" target="_blank">Neighbors ATX</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn--gold btn--sm" onclick="openBooking()">Book a Stay</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section id="home" style="background:var(--teal-800); padding: 88px 24px 80px; position:relative; overflow:hidden;">
+  <div style="position:absolute;top:-80px;right:-80px;width:440px;height:440px;border-radius:50%;background:#0B7B72;opacity:0.15;pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-60px;left:25%;width:280px;height:280px;border-radius:50%;background:#25B0A5;opacity:0.07;pointer-events:none;"></div>
+  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1;">
+    <div>
+      <span class="eyebrow eyebrow--gold">East Austin's Dog Home · Since 2014</span>
+      <h1 style="color:white;margin-bottom:20px;">We lead with love,<br><em>every single day.</em></h1>
+      <p style="font-size:17px;line-height:1.75;color:rgba(255,255,255,0.65);max-width:460px;margin-bottom:36px;">Boarding, daycare, and training rooted in positive reinforcement. Your dog is family to us too — not a number, not a kennel run.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px;">
+        <button class="btn btn--gold" onclick="openBooking()">Book a Stay</button>
+        <a href="#services" class="btn btn--outline-white" style="justify-content: center;">View Services</a>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <div class="hero-badge"><i data-lucide="award" style="width:14px;height:14px;"></i>AKC CGC Evaluator</div>
+        <div class="hero-badge"><i data-lucide="heart" style="width:14px;height:14px;"></i>CPR Certified</div>
+        <div class="hero-badge"><i data-lucide="star" style="width:14px;height:14px;"></i>10+ Years</div>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <div class="hero-img-wrap" style="border-radius:20px;overflow:hidden;height:400px;">
+        <img src="images/IMG_6213.png" alt="Dogs cuddling at East Lamar" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;"/>
+      </div>
+      <div class="hero-rating">
+        <div>
+          <div class="stars">★★★★★</div>
+          <div style="font-size:11px;color:var(--fg3);margin-top:2px;">60 Google reviews</div>
+        </div>
+        <div style="width:1px;height:32px;background:#f0f0ec;"></div>
+        <div>
+          <div class="score" style="font-size:20px;font-weight:800;color:var(--fg1);">4.7</div>
+          <div style="font-size:10px;color:var(--fg3);">Google rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ SERVICES ══════════════════ -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-headline">
+      <span class="eyebrow eyebrow--teal">What We Offer</span>
+      <h2>Full-service care,<br><em>start to finish.</em></h2>
+      <p>Every service we offer is built around Lamar's philosophy: positive reinforcement, genuine connection, and a home — not a kennel.</p>
+    </div>
+    <div class="services-grid">
+      <!-- Boarding -->
+      <div class="service-card">
+        <div class="service-card-top" style="background:var(--teal-050);overflow:hidden;padding:0;">
+          <img src="images/IMG_6144.png" alt="Dogs boarding at East Lamar" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;"/>
+        </div>
+        <div class="service-card-body">
+          <span class="eyebrow eyebrow--teal">Overnight</span>
+          <h3>Boarding</h3>
+          <p>Kennel-free overnight stays in a real home environment. Dogs sleep in beds, follow a structured daily routine, and get 24/7 staff care.</p>
+          <div class="service-price">From $100 / night · Seniors & small dogs: 25% off</div>
+          <ul class="service-features">
+            <li><i data-lucide="check" style="width:14px;height:14px;"></i>Kennel-free environment</li>
+            <li><i data-lucide="check" style="width:14px;height:14px;"></i>24/7 trained staff on site</li>
+            <li><i data-lucide="check" style="width:14px;height:14px;"></i>Structured daily schedule</li>
+            <li><i data-lucide="check" style="width:14px;height:14px;"></i>Daily photo updates</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Daycare -->
+      <div class="service-card">
+        <div class="service-card-top" style="background:var(--gold-light);overflow:hidden;padding:0;">
+          <img src="images/IMG_6212.png" alt="Daycare group at East Lamar" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;"/>
+        </div>
+        <div class="service-card-body">
+          <span class="eyebrow" style="color:var(--gold-dark);">Day Program</span>
+          <h3>Daycare</h3>
+          <p>Adventure walks, structured play, and group socialization managed by our team. Dogs come home tired — in the best way.</p>
+          <div class="service-price" style="background:var(--gold-light);color:var(--gold-dark);">$50 / day</div>
+          <ul class="service-features">
+            <li><i data-lucide="check" style="width:14px;height:14px;"></i>Morning adventure walk</li>
+            <li><i data-lucide="check" style="width:14px;height:14px;"></i>Structured group play</li>
+            <li><i data-lucide="check" style="width:14px;height:14px;"></i>Afternoon rest & enrichment</li>
+            <li><i data-lucide="check" style="width:14px;height:14px;"></i>Basic obedience reinforcement</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Training -->
+      <div class="service-card">
+        <div class="service-card-top" style="background:var(--teal-800);overflow:hidden;padding:0;">
+          <img src="images/IMG_8758.jpeg" alt="Training at East Lamar" style="width:100%;height:100%;object-fit:cover;object-position:center 45%;"/>
+        </div>
+        <div class="service-card-body">
+          <span class="eyebrow eyebrow--teal">Expert Instruction</span>
+          <h3>Training</h3>
+          <p>Personalized training from an AKC CGC Evaluator with 10+ years of experience. In-home sessions, Board & Train, and Adventure Camp programs available.</p>
+          <div class="service-price">Contact for pricing</div>
+          <ul class="service-features">
+            <li><i data-lucide="check" style="width:14px;height:14px;"></i>Positive reinforcement only</li>
+            <li><i data-lucide="check" style="width:14px;height:14px;"></i>AKC CGC prep available</li>
+            <li><i data-lucide="check" style="width:14px;height:14px;"></i>Board & Train programs</li>
+            <li><i data-lucide="check" style="width:14px;height:14px;"></i>In-home sessions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ DAILY SCHEDULE ══════════════════ -->
+<section class="section section--dark">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
+      <div>
+        <span class="eyebrow eyebrow--gold">Transparency You Can Trust</span>
+        <h2 style="color:white;margin-bottom:12px;">What a day actually <em>looks like.</em></h2>
+        <p style="color:rgba(255,255,255,0.55);font-size:16px;line-height:1.7;margin-bottom:36px;">Most boarding facilities won't show you this. We will — because it's what sets us apart.</p>
+        <div class="schedule-items">
+          <div class="schedule-item"><div class="schedule-time">5:00 AM</div><div class="schedule-desc"><strong>Rise &amp; Shine</strong> — Morning walk and first bathroom break for all guests</div></div>
+          <div class="schedule-item"><div class="schedule-time">7:00 AM</div><div class="schedule-desc"><strong>Breakfast</strong> — Fed according to owner instructions, no exceptions</div></div>
+          <div class="schedule-item"><div class="schedule-time">9:00 AM</div><div class="schedule-desc"><strong>Adventure Walk</strong> — Group walk around East Austin neighborhoods</div></div>
+          <div class="schedule-item"><div class="schedule-time">12:00 PM</div><div class="schedule-desc"><strong>Rest &amp; Enrichment</strong> — Midday rest, puzzle feeders, calm enrichment</div></div>
+          <div class="schedule-item"><div class="schedule-time">3:00 PM</div><div class="schedule-desc"><strong>Afternoon Play</strong> — Structured group play in the yard</div></div>
+          <div class="schedule-item"><div class="schedule-time">6:00 PM</div><div class="schedule-desc"><strong>Dinner</strong> — Evening feed per instructions</div></div>
+          <div class="schedule-item"><div class="schedule-time">9:00 PM</div><div class="schedule-desc"><strong>Lights Out</strong> — Dogs settle in for the night with staff on premises</div></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="schedule-visual">
+          <div><div style="font-family:'Fraunces',serif;font-size:52px;font-weight:800;color:white;line-height:1;letter-spacing:-0.03em;">24<span style="color:var(--teal-400);font-size:36px;">/7</span></div><div style="font-size:13px;color:rgba(255,255,255,0.45);margin-top:4px;">Staff on premises</div></div>
+          <div><div style="font-family:'Fraunces',serif;font-size:52px;font-weight:800;color:white;line-height:1;letter-spacing:-0.03em;">10<span style="color:var(--gold);font-size:28px;">+</span></div><div style="font-size:13px;color:rgba(255,255,255,0.45);margin-top:4px;">Years experience</div></div>
+          <div><div style="font-family:'Fraunces',serif;font-size:52px;font-weight:800;color:white;line-height:1;letter-spacing:-0.03em;">4.7<span style="color:var(--gold);font-size:24px;">★</span></div><div style="font-size:13px;color:rgba(255,255,255,0.45);margin-top:4px;">Google rating</div></div>
+          <div><div style="font-family:'Fraunces',serif;font-size:52px;font-weight:800;color:white;line-height:1;letter-spacing:-0.03em;">0</div><div style="font-size:13px;color:rgba(255,255,255,0.45);margin-top:4px;">Kennels. Ever.</div></div>
+        </div>
+        <div style="background:rgba(240,180,41,0.1);border:1px solid rgba(240,180,41,0.2);border-radius:12px;padding:20px;">
+          <div style="font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Currently Accepting New Clients</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">Spots are limited — we maintain small groups so every dog gets real attention.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ MEET LAMAR ══════════════════ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="lamar-grid">
+      <div class="lamar-photo" style="padding:0;overflow:hidden;">
+        <img src="images/lamar.jpg" alt="Lamar Bowman with a dog" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;"/>
+      </div>
+      <div>
+        <span class="eyebrow eyebrow--teal">The Person Behind It All</span>
+        <h2 style="margin-bottom:16px;">Meet Lamar<br><em>Bowman.</em></h2>
+        <div class="lamar-quote">"I don't run a kennel. I run a home — and your dog is a guest in it."</div>
+        <p style="font-size:15px;color:var(--fg2);line-height:1.75;margin-bottom:24px;">Lamar is an East Austin native, certified dog trainer, and AKC Canine Good Citizen evaluator with over a decade of experience. He founded East Lamar on a simple belief: a dog cared for with love is a dog that changes everything for its owner.</p>
+        <div class="lamar-creds">
+          <div class="lamar-cred"><i data-lucide="award" style="width:18px;height:18px;"></i><span>AKC CGC Evaluator</span></div>
+          <div class="lamar-cred"><i data-lucide="heart" style="width:18px;height:18px;"></i><span>CPR & First Aid Certified</span></div>
+          <div class="lamar-cred"><i data-lucide="book-open" style="width:18px;height:18px;"></i><span>7-Month Austin Animal Center Program</span></div>
+          <div class="lamar-cred"><i data-lucide="star" style="width:18px;height:18px;"></i><span>10+ Years Professional Training</span></div>
+        </div>
+        <button class="btn btn--teal" onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'});">Read Testimonials</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ TESTIMONIALS ══════════════════ -->
+<section id="testimonials" class="section section--warm">
+  <div class="container">
+    <div class="section-headline">
+      <span class="eyebrow eyebrow--teal">What Our Pack Says</span>
+      <h2>Real dogs. Real families.<br><em>Real results.</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-quote">"After 2 weeks with Lamar, my aussiedoodle is calm, confident, and genuinely happy. An absolute dog whisperer."</p><div class="testimonial-attr">Reilly McNerney</div><div class="testimonial-dog">Winnie, Aussiedoodle</div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-quote">"They welcome and care for Sebastian like he's their own. The team is incredible — I couldn't ask for more."</p><div class="testimonial-attr">Katura Daniel</div><div class="testimonial-dog">Sebastian, Chocolate Lab</div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-quote">"Lamar and team are dog whisperers. My dogs love going to spend the day or to board. Get in if you can!"</p><div class="testimonial-attr">Jessica Fields</div><div class="testimonial-dog">Cleo, Pittie</div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-quote">"My reactive dog has made more progress in 3 sessions with Lamar than in years of trying other trainers."</p><div class="testimonial-attr">Marcus T.</div><div class="testimonial-dog">Beau, Belgian Malinois</div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-quote">"You can tell these people genuinely love dogs. The updates and photos every day gave me total peace of mind."</p><div class="testimonial-attr">Andrea S.</div><div class="testimonial-dog">Luna, Border Collie</div></div>
+      <div class="testimonial-card" style="background:var(--teal-050);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:16px;">
+        <div style="font-size:40px;font-weight:800;font-family:'Fraunces',serif;color:var(--teal-600);">4.7<span style="font-size:24px;color:var(--gold);">★</span></div>
+        <div style="font-size:14px;color:var(--fg2);">from 60+ Google reviews</div>
+        <a class="btn btn--teal btn--sm" href="https://google.com/search?q=east+lamar+boarding+austin+reviews" target="_blank">Read All Reviews</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ EAST AUSTIN SPACES ══════════════════ -->
+<section id="spaces" class="section section--dark">
+  <div class="container">
+    <div class="section-headline">
+      <span class="eyebrow eyebrow--gold">Coming Soon</span>
+      <h2 style="color:white;">East Austin Spaces — <em>our campus grows.</em></h2>
+      <p style="color:rgba(255,255,255,0.5);">Two new private outdoor properties, blocks from our main facility. Available for sniff spot rentals, private training, and pop-up events.</p>
+    </div>
+    <div class="spaces-grid">
+      <div class="space-card">
+        <div class="space-card-img" style="padding:0;overflow:hidden;height:180px;"><img src="images/IMG_6066.jpeg" alt="Dogs playing at East Austin space" style="width:100%;height:100%;object-fit:cover;object-position:center 50%;"/></div>
+        <div class="space-card-body">
+          <span class="space-tag">Private Rental</span>
+          <h3>Pool Property</h3>
+          <p>A private outdoor space with a pool — perfect for birthday parties, private play sessions, and off-leash freedom without a crowd.</p>
+          <div class="address"><i data-lucide="map-pin" style="width:12px;height:12px;color:var(--teal-400);"></i>14th &amp; Maple Ave, East Austin</div>
+        </div>
+      </div>
+      <div class="space-card">
+        <div class="space-card-img" style="padding:0;overflow:hidden;height:180px;"><img src="images/IMG_7387.jpeg" alt="Evening adventure walk" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;"/></div>
+        <div class="space-card-body">
+          <span class="space-tag">Sniff Spot</span>
+          <h3>Chestnut Yard</h3>
+          <p>A shaded yard space ideal for training sessions, solo sniff time, and small group play. Book by the hour — no membership required.</p>
+          <div class="address"><i data-lucide="map-pin" style="width:12px;height:12px;color:var(--teal-400);"></i>Chestnut &amp; 14th, East Austin</div>
+        </div>
+      </div>
+      <div class="space-card">
+        <div class="space-card-img" style="padding:0;overflow:hidden;height:180px;"><img src="images/IMG_7100.jpeg" alt="Training at East Lamar" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;"/></div>
+        <div class="space-card-body">
+          <span class="space-tag">Main Facility</span>
+          <h3>East Lamar HQ</h3>
+          <p>Our home base — boarding, daycare, training, and the heart of our operation. The yard, the team, and the dogs you've heard about.</p>
+          <div class="address"><i data-lucide="map-pin" style="width:12px;height:12px;color:var(--teal-400);"></i>2001 E 12th St, East Austin</div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <button class="btn btn--outline-white" onclick="openBooking()">Get Notified When Spaces Open</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ NEIGHBORS CROSSPROMO ══════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="neighbors-bar">
+      <div>
+        <div class="neighbors-meta">Our Sister Business · South Austin</div>
+        <h3>Also love Neighbors ATX Dog Park.</h3>
+        <p>A membership dog park on South Congress — coffee cart, community events, and group training led by Lamar. Good dogs make great Neighbors.</p>
+        <div style="margin-top:20px;display:flex;gap:10px;">
+          <a href="https://neighborsatx.com" target="_blank" class="btn btn--teal btn--sm">Visit neighborsatx.com ↗</a>
+        </div>
+      </div>
+      <div style="text-align:center;padding:32px;background:white;border-radius:var(--radius);box-shadow:var(--shadow);min-width:200px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg3);margin-bottom:12px;">Neighbors ATX</div>
+        <div style="font-size:13px;color:var(--fg2);line-height:1.6;margin-bottom:12px;">$50/mo membership<br>$25 add-on dog<br>Day passes available</div>
+        <div style="font-size:12px;color:var(--fg3);">5609 S Congress Ave<br>South Austin</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="images/east_lamar_logo.png" alt="East Lamar Boarding & Training School"/>
+      </div>
+      <p>East Austin's home for boarding, daycare, and training — rooted in positive reinforcement and genuine love for dogs.</p>
+      <div style="display:flex;gap:12px;margin-top:20px;">
+        <a href="https://instagram.com/east.lamar" target="_blank" style="color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;">@east.lamar ↗</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <div class="footer-links">
+        <a class="footer-link" href="#services">Boarding</a>
+        <a class="footer-link" href="#services">Daycare</a>
+        <a class="footer-link" href="#services">Training</a>
+        <a class="footer-link" href="#services">Adventure Camp</a>
+        <a class="footer-link" href="#spaces">Our Spaces</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <div class="footer-links">
+        <a class="footer-link" href="#about">About Lamar</a>
+        <a class="footer-link" href="mailto:boarding@eastlamar.com">Contact</a>
+        <a class="footer-link" href="#" onclick="openBooking(); return false;">Booking</a>
+        <a class="footer-link" href="#testimonials">Testimonials</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item"><i data-lucide="map-pin" style="width:14px;height:14px;"></i><span>2001 E 12th St<br>Austin, TX 78702</span></div>
+      <div class="footer-contact-item"><i data-lucide="mail" style="width:14px;height:14px;"></i><span><a href="mailto:boarding@eastlamar.com" style="color:rgba(255,255,255,0.6);">boarding@eastlamar.com</a></span></div>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:8px;">Sister Business</div>
+        <a class="footer-link" href="https://neighborsatx.com" target="_blank" style="font-size:13px;">Neighbors ATX Dog Park ↗</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 East Lamar Boarding &amp; Training School · East Austin, TX</span>
+    <span>A Lamar Bowman property</span>
+  </div>
+</footer>
+
+<!-- ══════════════════ BOOKING MODAL ══════════════════ -->
+<div class="modal-overlay" id="booking-modal" onclick="if(event.target===this)closeBooking()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeBooking()"><i data-lucide="x" style="width:16px;height:16px;"></i></button>
+    <span class="eyebrow eyebrow--teal" style="margin-bottom:8px;display:block;">Ready to get started?</span>
+    <h3>Book with East Lamar</h3>
+    <p class="sub">Choose what you're looking for — we'll get you set up in our booking system.</p>
+    <div class="booking-options">
+      <a href="https://app.timetopet.com" target="_blank" class="booking-option" style="display:flex; align-items:center; color: inherit; text-decoration: none;">
+        <div class="booking-option-icon"><i data-lucide="moon" style="width:20px;height:20px;"></i></div>
+        <div><h4>Boarding or Daycare</h4><p>New or returning clients · Via Time to Pet portal</p></div>
+        <i data-lucide="chevron-right" style="width:16px;height:16px;color:var(--fg3);margin-left:auto;"></i>
+      </a>
+      <div class="booking-option" onclick="window.location.href='mailto:boarding@eastlamar.com'">
+        <div class="booking-option-icon"><i data-lucide="graduation-cap" style="width:20px;height:20px;"></i></div>
+        <div><h4>Training Inquiry</h4><p>Tell us about your dog · We'll follow up</p></div>
+        <i data-lucide="chevron-right" style="width:16px;height:16px;color:var(--fg3);margin-left:auto;"></i>
+      </div>
+      <div class="booking-option" onclick="closeBooking()">
+        <div class="booking-option-icon"><i data-lucide="key" style="width:20px;height:20px;"></i></div>
+        <div><h4>Reserve a Space</h4><p>Pool property or Chestnut Yard · Coming soon</p></div>
+        <i data-lucide="chevron-right" style="width:16px;height:16px;color:var(--fg3);margin-left:auto;"></i>
+      </div>
+    </div>
+    <p class="modal-note">New clients: you'll create a free account in our Time to Pet portal.<br>Questions? Email <a href="mailto:boarding@eastlamar.com" style="color: var(--teal-600); font-weight: 600;">boarding@eastlamar.com</a></p>
+  </div>
+</div>
+
+<script>
+  lucide.createIcons();
+
+  function openBooking() {
+    document.getElementById('booking-modal').classList.add('open');
+  }
+
+  function closeBooking() {
+    document.getElementById('booking-modal').classList.remove('open');
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeBooking();
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href !== '#' && !href.includes('mailto')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
